@@ -1,0 +1,7 @@
+{
+  "serverURI": "http://127.0.0.1:9000/login",
+  "maxPassLength": 5,
+  "attempts": true,
+  "attemptTimeout": 100,
+  "chars": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+}
