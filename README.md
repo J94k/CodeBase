@@ -1,1 +1,1 @@
-# Scripts
+# ❔ Scripts for nothing and everything ❔

