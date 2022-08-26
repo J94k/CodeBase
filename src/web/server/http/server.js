@@ -7,6 +7,7 @@ dotenv.config();
 
 const { PORT, ADMIN_NAME, ADMIN_HASH } = process.env;
 
+// file deepcode ignore UseCsurfForExpress: <Test file, it won't be in production>
 const app = express();
 
 app.disable("x-powered-by");
