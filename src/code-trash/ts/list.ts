@@ -57,6 +57,7 @@ function middleNode(head: ListNode["next"]): ListNode["next"] {
 
 type CommonNode = ListNode | null;
 
+// @audit result does not have the element before last
 function mergeTwoLists(list1: CommonNode, list2: CommonNode): CommonNode {
   let [currentNode, checkedNode] =
     list1?.val < list2?.val ? [list1, list2] : [list2, list1];

@@ -2,7 +2,7 @@ function isSubsequence(s: string, t: string): boolean {
   let buildedStr = "";
   let target = s;
 
-  for (const char of t.split('')) {
+  for (const char of t.split("")) {
     const targetChar = target[0];
 
     if (char === targetChar) {
@@ -18,7 +18,8 @@ function replaceCharsWithNums(s: string): string {
   let result = "";
   let counter = 0;
 
-  for (const c of s.split('')) {
+  for (const c of s.split("")) {
+    // @ts-ignore
     if (result.includes(c)) {
       const existingCounter = result[result.indexOf(c) + 1];
 
@@ -36,4 +37,15 @@ function isIsomorphic(s: string, t: string): boolean {
   if (s.length !== t.length) return false;
 
   return replaceCharsWithNums(s) === replaceCharsWithNums(t);
+}
+
+function lengthOfLastWord(s: string): number {
+  const noSpacePaddingStr = s.trim();
+  const match: RegExpMatchArray | null = noSpacePaddingStr.match(/ ([^ ]*?)$/);
+
+  if (match) {
+    return match[0].slice(1).length;
+  }
+
+  return noSpacePaddingStr.length;
 }

@@ -73,3 +73,37 @@ function maximumWealth(accounts: number[][]): number {
 
   return wealth;
 }
+
+function removeElement(nums: number[], val: number): number {
+  const foo = -1;
+  const resultArr: number[] = nums
+    .sort((n1: number) => {
+      return n1 === val ? 1 : -1;
+    })
+    .map((n) => (n === val ? foo : n));
+  const elementsAmount = resultArr.indexOf(foo);
+
+  return elementsAmount === -1 ? resultArr.length : elementsAmount;
+}
+
+function removeDuplicates(nums: number[]): number {
+  const beyondRange = 101;
+  let i = 0;
+
+  while (i < nums.length) {
+    let current = nums[i];
+    let next = nums[i + 1];
+
+    if (next === current && next !== beyondRange) {
+      nums[i] = beyondRange;
+    }
+
+    i++;
+  }
+
+  const sorted = nums.sort((n1, n2) => (n1 > n2 ? 1 : -1));
+  const numberOfElements = sorted.indexOf(beyondRange);
+
+  return numberOfElements > -1 ? numberOfElements : nums.length;
+}
+
