@@ -107,3 +107,19 @@ function removeDuplicates(nums: number[]): number {
   return numberOfElements > -1 ? numberOfElements : nums.length;
 }
 
+function searchInsert(nums: number[], target: number): number {
+  let possibleIndex;
+
+  for (let i = 0; i < nums.length; i++) {
+    const currentN = nums[i];
+
+    if (currentN === target) return i;
+
+    if (currentN > target) {
+      possibleIndex = i;
+      break;
+    }
+  }
+
+  return possibleIndex !== undefined ? possibleIndex : nums.length;
+}

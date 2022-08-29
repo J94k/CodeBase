@@ -49,3 +49,9 @@ function lengthOfLastWord(s: string): number {
 
   return noSpacePaddingStr.length;
 }
+
+function strStr(haystack: string, needle: string): number {
+  const index = haystack.match(new RegExp(needle))?.index;
+
+  return !needle ? 0 : index !== undefined ? index : -1;
+}
