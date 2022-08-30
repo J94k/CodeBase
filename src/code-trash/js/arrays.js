@@ -19,3 +19,16 @@ var maxProfit = function (prices) {
 
   return profit;
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function (nums) {
+  for (const n of nums) {
+    if (nums.filter((checkedN) => checkedN === n).length === 1) {
+      return n;
+    }
+  }
+};
+
