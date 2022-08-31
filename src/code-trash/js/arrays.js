@@ -32,3 +32,19 @@ var singleNumber = function (nums) {
   }
 };
 
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function (nums) {
+  for (const n of nums) {
+    let counter = 0;
+
+    for (const f of nums) {
+      if (n === f) counter++;
+      if (counter > 1) return true;
+    }
+  }
+
+  return false;
+};

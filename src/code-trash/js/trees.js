@@ -24,3 +24,18 @@ var hasPathSum = function (root, targetSum) {
 
   return hasPathSum(root.left, newTarget) || hasPathSum(root.right, newTarget);
 };
+
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var invertTree = function (root) {
+  if (!root) return root;
+
+  const tmpLeftRoot = invertTree(root.left);
+
+  root.left = invertTree(root.right);
+  root.right = tmpLeftRoot;
+
+  return root;
+};
