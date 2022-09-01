@@ -39,3 +39,25 @@ var invertTree = function (root) {
 
   return root;
 };
+
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+// @audit we need take into account the previous parrent node values
+var isValidBST = function (root) {
+  if (!root) return true;
+
+  const isValidLeft =
+    typeof root.left?.val === "number" ? root.val > root.left.val : true;
+
+  const isValidRight =
+    typeof root.right?.val === "number" ? root.val < root.right.val : true;
+
+  return (
+    isValidLeft &&
+    isValidRight &&
+    isValidBST(root.left) &&
+    isValidBST(root.right)
+  );
+};
