@@ -26,3 +26,15 @@ var addDigits = function (num) {
 
   return result;
 };
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var findComplement = function (num) {
+  const complement = num.toString(2).split``.map((n) =>
+    n === "1" ? "0" : "1"
+  );
+
+  return parseInt(complement.join``, 2);
+};
