@@ -33,8 +33,37 @@ var addDigits = function (num) {
  */
 var findComplement = function (num) {
   const complement = num.toString(2).split``.map((n) =>
-    n === "1" ? "0" : "1"
+    n === '1' ? '0' : '1'
   );
 
   return parseInt(complement.join``, 2);
+};
+
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function (digits) {
+  const result = [];
+  const maxDigit = 9;
+  let added = 1;
+
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let d = digits[i];
+
+    if (added) d += added;
+
+    if (d > maxDigit) {
+      d = d - (maxDigit + 1);
+      added = 1;
+    } else {
+      added = 0;
+    }
+
+    result.push(d);
+  }
+
+  if (added) result.push(added);
+
+  return result.reverse();
 };
