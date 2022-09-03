@@ -4,3 +4,4 @@ node_modules
 __log.*
 **/ts/*.out.js
 **/ts/out.js
+**/bin
