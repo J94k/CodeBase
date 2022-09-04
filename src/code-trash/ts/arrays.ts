@@ -24,7 +24,7 @@ function pivotIndex(nums: number[]): number {
 }
 
 function commonPrefix(s1: string, s2: string): string {
-  let p = "";
+  let p = '';
   const [first, last] = s1.length < s2.length ? [s1, s2] : [s2, s1];
 
   for (let i = 0; i < first.length; i++) {
@@ -38,7 +38,7 @@ function commonPrefix(s1: string, s2: string): string {
 function longestCommonPrefix(strs: string[]): string {
   if (strs.length === 1) return strs[0];
 
-  let prefix = "";
+  let prefix = '';
 
   baseLoop: for (let i = 0; i < strs.length - 1; i++) {
     const baseWord = strs[i];
@@ -47,7 +47,7 @@ function longestCommonPrefix(strs: string[]): string {
       const comparedWord = strs[j];
 
       if (baseWord[0] !== comparedWord[0]) {
-        prefix = "";
+        prefix = '';
         break baseLoop;
       }
 
@@ -122,4 +122,37 @@ function searchInsert(nums: number[], target: number): number {
   }
 
   return possibleIndex !== undefined ? possibleIndex : nums.length;
+}
+
+function majorityElement(nums: number[]): number {
+  if (nums.length < 2) return nums[0];
+
+  const minAmount = Math.ceil(nums.length / 2);
+
+  for (let i = 0; i < nums.length - 1; i++) {
+    let amount = 1;
+
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[j] === nums[i]) amount++;
+      if (amount >= minAmount) return nums[i];
+    }
+  }
+
+  return Infinity;
+}
+
+function thirdMax(nums: number[]): number {
+  const cleaned: number[] = [];
+
+  nums
+    .sort((n1, n2) => n2 - n1)
+    .forEach((n) => {
+      if (!cleaned.includes(n)) {
+        cleaned.push(n);
+      }
+    });
+
+  const third = cleaned[2];
+
+  return typeof third === 'number' ? third : cleaned[0];
 }

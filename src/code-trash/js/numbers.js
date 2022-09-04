@@ -32,9 +32,7 @@ var addDigits = function (num) {
  * @return {number}
  */
 var findComplement = function (num) {
-  const complement = num.toString(2).split``.map((n) =>
-    n === '1' ? '0' : '1'
-  );
+  const complement = num.toString(2).split``.map((n) => (n === '1' ? '0' : '1'));
 
   return parseInt(complement.join``, 2);
 };
@@ -66,4 +64,15 @@ var plusOne = function (digits) {
   if (added) result.push(added);
 
   return result.reverse();
+};
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var fib = function (n) {
+  if (n === 0) return 0;
+  if (n < 3) return 1;
+
+  return fib(n - 1) + fib(n - 2);
 };
