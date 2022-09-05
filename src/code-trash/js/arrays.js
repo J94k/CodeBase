@@ -48,3 +48,26 @@ var containsDuplicate = function (nums) {
 
   return false;
 };
+
+/**
+ * @param {string[]} words
+ * @param {string} order
+ * @return {boolean}
+ */
+var isAlienSorted = function (words, order) {
+  for (const w of words) {
+    let wIndexes = [];
+
+    for (const l of w) {
+      const i = order.indexOf(l);
+
+      if (wIndexes.at(-1) > i) {
+        return false;
+      }
+
+      wIndexes.push(order.indexOf(l));
+    }
+  }
+
+  return true;
+};

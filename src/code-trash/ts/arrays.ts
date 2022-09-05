@@ -156,3 +156,46 @@ function thirdMax(nums: number[]): number {
 
   return typeof third === 'number' ? third : cleaned[0];
 }
+
+function validMountainArray(arr: number[]): boolean {
+  if (arr.length < 3) return false;
+
+  const s1 = arr.at(0);
+  const s2 = arr.at(1);
+  const e1 = arr.at(-2);
+  const e2 = arr.at(-1);
+
+  if ((e2 && e1 && e1 < e2) || (s1 && s2 && s1 > s2)) return false;
+
+  enum Direction {
+    up,
+    down,
+  }
+
+  let direction = Direction.up;
+  let isMount = true;
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    const currentN = arr[i];
+    const nextN = arr[i + 1];
+
+    if (currentN === nextN || (nextN > currentN && direction === Direction.down)) {
+      isMount = false;
+      break;
+    }
+
+    if (nextN < currentN && direction === Direction.up) {
+      direction = Direction.down;
+    }
+  }
+
+  return isMount && direction === Direction.down;
+}
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortedSquares = function (nums) {
+  return nums.map((n) => n ** 2).sort((n1, n2) => n1 - n2);
+};

@@ -5,3 +5,5 @@ __log.*
 **/ts/*.out.js
 **/ts/out.js
 **/bin
+**/target
+Cargo.lock
