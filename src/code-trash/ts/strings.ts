@@ -72,3 +72,20 @@ function isPalindrome(s: string): boolean {
 
   return left === right;
 }
+
+const takeScore = (str: string, targetNum: number) =>
+  str.match(new RegExp(`${targetNum}`, 'g'))?.length || 0;
+
+function maxScore(s: string): number {
+  let score = 0;
+
+  for (let x = 1; x < s.length; x++) {
+    const left = s.slice(0, x);
+    const right = s.slice(x);
+    const current = takeScore(left, 0) + takeScore(right, 1);
+
+    if (score < current) score = current;
+  }
+
+  return score;
+}

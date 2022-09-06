@@ -71,3 +71,11 @@ var isAlienSorted = function (words, order) {
 
   return true;
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortedSquares = function (nums) {
+  return nums.map((n) => n ** 2).sort((n1, n2) => n1 - n2);
+};
