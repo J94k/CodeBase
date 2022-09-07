@@ -79,3 +79,32 @@ var isAlienSorted = function (words, order) {
 var sortedSquares = function (nums) {
   return nums.map((n) => n ** 2).sort((n1, n2) => n1 - n2);
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var binarySearch = function (nums, target) {
+  let startI = 0;
+  let endI = nums.length - 1;
+
+  if (nums.at(0) > target || nums.at(-1) < target) return -1;
+  if (nums[startI] === target) return startI;
+  if (nums[endI] === target) return endI;
+
+  while (startI !== endI) {
+    let middleI = Math.floor(startI + (endI - startI) / 2);
+    let middleN = nums[middleI];
+
+    if (middleN === target) {
+      return middleI;
+    } else if (target < middleN) {
+      endI = middleI - 1;
+    } else {
+      startI = middleI + 1;
+    }
+  }
+
+  return -1;
+};
