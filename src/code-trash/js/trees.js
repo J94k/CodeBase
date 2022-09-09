@@ -48,16 +48,21 @@ var invertTree = function (root) {
 var isValidBST = function (root) {
   if (!root) return true;
 
-  const isValidLeft =
-    typeof root.left?.val === "number" ? root.val > root.left.val : true;
+  const isValidLeft = typeof root.left?.val === 'number' ? root.val > root.left.val : true;
+  const isValidRight = typeof root.right?.val === 'number' ? root.val < root.right.val : true;
 
-  const isValidRight =
-    typeof root.right?.val === "number" ? root.val < root.right.val : true;
+  return isValidLeft && isValidRight && isValidBST(root.left) && isValidBST(root.right);
+};
 
-  return (
-    isValidLeft &&
-    isValidRight &&
-    isValidBST(root.left) &&
-    isValidBST(root.right)
-  );
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth = function (root) {
+  if (!root) return 0;
+
+  const left = maxDepth(root.left);
+  const right = maxDepth(root.right);
+
+  return 1 + Math.max(left, right);
 };
