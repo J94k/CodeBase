@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ESNext",
+    ],
+    "target": "ESNext",
+  },
+  "noImplicitAny": true,
+  "include": [
+    "./*"
+  ],
+}

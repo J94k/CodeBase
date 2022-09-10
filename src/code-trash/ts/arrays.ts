@@ -205,3 +205,19 @@ function twoSum(nums: number[], target: number): [number, number] {
 
   return [-1, -1];
 }
+
+const firstBadVersion = (isBadVersion: any) => {
+  return (n: number): number => {
+    let lastBadVersion: number;
+
+    for (let v = n; v >= 1; v--) {
+      if (isBadVersion(v)) {
+        lastBadVersion = v;
+      } else {
+        if (lastBadVersion) return lastBadVersion;
+      }
+    }
+
+    return lastBadVersion;
+  };
+};
