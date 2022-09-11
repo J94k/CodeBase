@@ -221,3 +221,16 @@ const firstBadVersion = (isBadVersion: any) => {
     return lastBadVersion;
   };
 };
+
+// @todo increase speed to O(n)
+// in this case we can remove number signs, so we don't care about
+// multiplication at first place for correct sorting
+function sortedSquares(nums: number[]): number[] {
+  return nums.map((n) => n ** 2).sort((n1, n2) => n1 - n2);
+}
+
+function rotate(nums: number[], k: number): void {
+  for (let s = 0; s < k; ++s) {
+    nums.unshift(nums.pop());
+  }
+}
