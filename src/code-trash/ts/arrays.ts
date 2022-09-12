@@ -234,3 +234,30 @@ function rotate(nums: number[], k: number): void {
     nums.unshift(nums.pop());
   }
 }
+
+function reverseString(s: string[]): string {
+  let sI = 0;
+  let eI = s.length - 1;
+
+  while (sI < eI) {
+    const tmp = s[sI];
+
+    s[sI] = s[eI];
+    s[eI] = tmp;
+    sI++;
+    eI--;
+  }
+
+  return s.join('');
+}
+
+function reverseWords(s: string): string {
+  let result = '';
+
+  for (const w of s.split(' ')) {
+    result += reverseString(w.split(''));
+    result += ' ';
+  }
+
+  return result.trim();
+}
