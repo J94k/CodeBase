@@ -19,7 +19,6 @@ function replaceCharsWithNums(s: string): string {
   let counter = 0;
 
   for (const c of s.split('')) {
-    // @ts-ignore
     if (result.includes(c)) {
       const existingCounter = result[result.indexOf(c) + 1];
 
@@ -89,3 +88,25 @@ function maxScore(s: string): number {
 
   return score;
 }
+
+function lengthOfLongestSubstring(s: string): number {
+  if (s.length === 1) return 1
+
+  let longest = '';
+
+  for (let i = 0; i < s.length - 1; i++) {
+    let subStr: string = s[i];
+
+    for (let j = i + 1; j < s.length; j++) {
+      if (subStr.includes(s[j])) break;
+
+      subStr += s[j];
+    }
+
+    if (!longest || longest.length < subStr.length) {
+      longest = subStr;
+    }
+  }
+
+  return longest.length;
+};

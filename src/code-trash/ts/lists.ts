@@ -88,3 +88,39 @@ function mergeTwoLists(list1: CommonNode, list2: CommonNode): CommonNode {
 
   return headOfMerged;
 }
+
+// @todo complete, it doesn't work
+function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+  if (!head.next) return null;
+
+  let nodesAmount = 2;
+  let tmpNode = head.next;
+
+  while (tmpNode.next) {
+    tmpNode = tmpNode.next;
+    nodesAmount++;
+  }
+
+  tmpNode = head.next;
+  let currentNodeNumber = 2;
+  let numOfTargetNode = nodesAmount - n;
+
+  if (numOfTargetNode > currentNodeNumber) {
+    tmpNode = head;
+    currentNodeNumber = 1;
+  }
+
+  while (numOfTargetNode) {
+    if (!tmpNode?.next) numOfTargetNode = null;
+
+    if (currentNodeNumber === numOfTargetNode) {
+      tmpNode.next = tmpNode.next?.next || null;
+      break;
+    }
+
+    tmpNode = tmpNode.next;
+    currentNodeNumber++;
+  }
+
+  return head;
+}
