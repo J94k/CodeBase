@@ -261,3 +261,11 @@ function reverseWords(s: string): string {
 
   return result.trim();
 }
+
+function average(salary: number[]): number {
+  const targetSalaries = salary.sort((s1, s2) => s1 - s2).slice(1, salary.length - 2);
+
+  return targetSalaries.length
+    ? targetSalaries.reduce((acc, s) => (acc += s)) / targetSalaries.length
+    : 0;
+}

@@ -13,3 +13,13 @@ function arrangeCoins(n: number): number {
 
   return rows;
 }
+
+function countOdds(low: number, high: number): number {
+  let counter = 0;
+
+  for (let i = low; i <= high; i++) {
+    if (i % 2 !== 0) ++counter;
+  }
+
+  return counter;
+}

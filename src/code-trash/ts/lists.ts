@@ -55,14 +55,12 @@ function middleNode(head: ListNode['next']): ListNode['next'] {
   return result;
 }
 
-type CommonNode = ListNode | null;
-
 // @audit result does not have the element before last
-function mergeTwoLists(list1: CommonNode, list2: CommonNode): CommonNode {
+function mergeTwoLists(list1: ListNode, list2: ListNode): ListNode {
   if (!list1) return list2;
   if (!list2) return list1;
 
-  let [currentNode, checkedNode]: [CommonNode, CommonNode] =
+  let [currentNode, checkedNode]: [ListNode, ListNode] =
     list1?.val < list2?.val ? [list1, list2] : [list2, list1];
   const headOfMerged = currentNode;
 
