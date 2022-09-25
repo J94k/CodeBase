@@ -23,3 +23,23 @@ function countOdds(low: number, high: number): number {
 
   return counter;
 }
+
+function subtractProductAndSum(n: number): number {
+  let product;
+  let sum = 0;
+
+  for (const sD of String(n)) {
+    const d = Number(sD);
+
+    if (typeof product !== 'number') product = d;
+    else product *= d;
+
+    sum += d;
+  }
+
+  return product - sum;
+}
+
+function hammingWeight(n: number): number {
+  return n.toString(2).match(/1/g)?.length ?? 0;
+}

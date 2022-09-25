@@ -90,7 +90,7 @@ function maxScore(s: string): number {
 }
 
 function lengthOfLongestSubstring(s: string): number {
-  if (s.length === 1) return 1
+  if (s.length === 1) return 1;
 
   let longest = '';
 
@@ -109,4 +109,19 @@ function lengthOfLongestSubstring(s: string): number {
   }
 
   return longest.length;
-};
+}
+
+const sortChars = (s: string): string => s.split('').sort().join('');
+
+function findTheDifference(s: string, t: string): string {
+  if (!s) return t;
+
+  const sortedS = sortChars(s);
+  const sortedT = sortChars(t);
+
+  for (let i = 0; i < sortedS.length; i++) {
+    if (sortedS[i] !== sortedT[i]) return sortedT[i];
+  }
+
+  return sortedT.at(-1);
+}
