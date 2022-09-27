@@ -76,3 +76,25 @@ var fib = function (n) {
 
   return fib(n - 1) + fib(n - 2);
 };
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isHappy = function (n) {
+  let strN = String(n);
+  const computed = [strN];
+
+  if (n === 1) return true;
+
+  while (strN !== '1') {
+    let newN = String(strN.split('').reduce((sum, n) => (sum += n ** 2), 0));
+
+    if (computed.includes(newN)) return false;
+
+    strN = newN;
+    computed.push(newN);
+  }
+
+  return true;
+};

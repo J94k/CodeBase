@@ -269,3 +269,30 @@ function average(salary: number[]): number {
     ? targetSalaries.reduce((acc, s) => (acc += s)) / targetSalaries.length
     : 0;
 }
+
+function arraySign(nums: number[]): number {
+  if (nums.includes(0)) return 0;
+
+  const product = nums.reduce((product, n) => (product *= n));
+
+  return product > 0 ? 1 : product === 0 ? 0 : -1;
+}
+
+function canMakeArithmeticProgression(arr: number[]): boolean {
+  const sorted = arr.sort((n1, n2) => n1 - n2);
+  let commonDifference;
+
+  for (let i = 0; i < sorted.length - 1; i++) {
+    const n1 = sorted[i];
+    const n2 = sorted[i + 1];
+    const d = n2 - n1;
+
+    if (typeof commonDifference !== 'number') {
+      commonDifference = d;
+    } else if (d !== commonDifference) {
+      return false;
+    }
+  }
+
+  return true;
+}
