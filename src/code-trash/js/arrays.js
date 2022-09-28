@@ -128,3 +128,31 @@ var search = function (nums, target) {
 
   return -1;
 };
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var nextGreaterElement = function (nums1, nums2) {
+  const result = [];
+
+  for (let i = 0; i < nums1.length; i++) {
+    const underlinedN = nums1[i];
+    const sourceNIndex = nums2.indexOf(underlinedN);
+    let greater = -1;
+
+    for (let j = sourceNIndex + 1; j < nums2.length; j++) {
+      const n = nums2[j];
+
+      if (n > underlinedN) {
+        greater = n;
+        break;
+      }
+    }
+
+    result.push(greater);
+  }
+
+  return result;
+};
