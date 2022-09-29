@@ -156,3 +156,30 @@ var nextGreaterElement = function (nums1, nums2) {
 
   return result;
 };
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var sumOddLengthSubarrays = function (arr) {
+  if (!arr.length) return 0;
+  if (arr.length < 2) return arr[0];
+
+  const maxLength = arr.length;
+  let currentLength = 1;
+  let sum = 0;
+
+  while (currentLength <= maxLength) {
+    if (currentLength === maxLength) {
+      sum += arr.reduce((sum, n) => (sum += n));
+    } else {
+      for (let i = 0; i + currentLength <= arr.length; i++) {
+        sum += arr.slice(i, i + currentLength).reduce((sum, n) => (sum += n));
+      }
+    }
+
+    currentLength += 2;
+  }
+
+  return sum;
+};
