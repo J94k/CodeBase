@@ -16,3 +16,30 @@ function kWeakestRows(mat: number[][], k: number): number[] {
 
   return arrOfSoldiersAmount.slice(0, k).map(({ sourceIndex }) => sourceIndex);
 }
+
+function diagonalSum(mat: number[][]): number {
+  let sum = 0;
+  let rowIndexL = 0;
+  let rowIndexR = mat[0].length - 1;
+
+  for (let row = 0; row < mat.length; row++) {
+    const n1 = mat[row][rowIndexL];
+    const n2 = mat[row][rowIndexR];
+
+    if (rowIndexR && rowIndexL !== rowIndexR) {
+      sum += n1 + n2;
+    } else {
+      sum += n1;
+    }
+
+    if (rowIndexL === rowIndexR || rowIndexL + 1 === rowIndexR || rowIndexR - 1 === rowIndexL) {
+      rowIndexL--;
+      rowIndexR++;
+    } else {
+      rowIndexL++;
+      rowIndexR--;
+    }
+  }
+
+  return sum;
+}

@@ -125,3 +125,25 @@ function findTheDifference(s: string, t: string): string {
 
   return sortedT.at(-1);
 }
+
+function mergeAlternately(word1: string, word2: string): string {
+  let result = '';
+
+  for (let i = 0; i < word1.length; i++) {
+    const c1 = word1[i];
+    const c2 = word2[i];
+
+    if (!c2 && c1) {
+      result += word1.slice(i);
+      break;
+    }
+
+    result += c1 + c2;
+  }
+
+  if (word1.length < word2.length) {
+    result += word2.slice(word1.length);
+  }
+
+  return result;
+}

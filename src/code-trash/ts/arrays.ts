@@ -296,31 +296,3 @@ function canMakeArithmeticProgression(arr: number[]): boolean {
 
   return true;
 }
-
-// @fix: does not work with all cases
-function diagonalSum(mat: number[][]): number {
-  let sum = 0;
-  let rowIF = 0;
-  let rowIL = mat[0].length - 1;
-
-  for (let row = 0; row < mat.length; row++) {
-    const n1 = mat[row][rowIF];
-    const n2 = mat[row][rowIL];
-
-    if (rowIL && rowIF !== rowIL) {
-      sum += n1 + n2;
-    } else {
-      sum += n1;
-    }
-
-    if (rowIF === rowIL || rowIF + 1 === rowIL || rowIL - 1 === rowIF) {
-      rowIF--;
-      rowIL++;
-    } else {
-      rowIF++;
-      rowIL--;
-    }
-  }
-
-  return sum;
-}
