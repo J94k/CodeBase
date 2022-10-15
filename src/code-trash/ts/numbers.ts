@@ -25,7 +25,7 @@ function countOdds(low: number, high: number): number {
 }
 
 function subtractProductAndSum(n: number): number {
-  let product;
+  let product: number;
   let sum = 0;
 
   for (const sD of String(n)) {
@@ -51,8 +51,8 @@ const getManhattanDistance = (coord1: Coordinate, coord2: Coordinate) => {
 };
 
 function nearestValidPoint(x: number, y: number, points: Coordinate[]): number {
-  let index;
-  let minDistance;
+  let index: number;
+  let minDistance: number;
   const pointsWithoutInvalid = points.map((p) => (p[0] === x || p[1] === y ? p : null));
 
   for (let i = 0; i < pointsWithoutInvalid.length; i++) {
@@ -69,4 +69,30 @@ function nearestValidPoint(x: number, y: number, points: Coordinate[]): number {
   }
 
   return typeof index === 'number' ? index : -1;
+}
+
+function fib(n: number): number {
+  if (n === 0 || n === 1) return n;
+
+  return fib(n - 1) + fib(n - 2);
+}
+
+const cache = {};
+
+function tribonacci(n: number): number {
+  if (n === 0) return 0;
+  if (n === 1 || n === 2) return 1;
+  if (n === 3) return 2;
+  if (cache[n]) return cache[n];
+
+  const n1 = tribonacci(n - 1);
+  cache[n - 1] = n1;
+
+  const n2 = tribonacci(n - 2);
+  cache[n - 2] = n2;
+
+  const n3 = tribonacci(n - 3);
+  cache[n - 3] = n3;
+
+  return n1 + n2 + n3;
 }
