@@ -1,3 +1,7 @@
+import Cache from './Cache';
+
+const cache = new Cache();
+
 function arrangeCoins(n: number): number {
   if (n === 1) return 1;
 
@@ -77,22 +81,33 @@ function fib(n: number): number {
   return fib(n - 1) + fib(n - 2);
 }
 
-const cache = {};
-
 function tribonacci(n: number): number {
   if (n === 0) return 0;
   if (n === 1 || n === 2) return 1;
   if (n === 3) return 2;
-  if (cache[n]) return cache[n];
+  if (cache.has(n)) return cache.get(n);
 
   const n1 = tribonacci(n - 1);
-  cache[n - 1] = n1;
+  cache.set(n - 1, n1);
 
   const n2 = tribonacci(n - 2);
-  cache[n - 2] = n2;
+  cache.set(n - 2, n2);
 
   const n3 = tribonacci(n - 3);
-  cache[n - 3] = n3;
+  cache.set(n - 3, n3);
 
   return n1 + n2 + n3;
+}
+
+function climbStairs(n: number): number {
+  if (n < 4) return n;
+  if (cache.has(n)) return cache.get(n);
+
+  const s2 = climbStairs(n - 2);
+  cache.set(n - 2, s2);
+
+  const s1 = climbStairs(n - 1);
+  cache.set(n - 1, s1);
+
+  return s1 + s2;
 }
