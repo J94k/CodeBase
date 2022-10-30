@@ -147,3 +147,26 @@ function mergeAlternately(word1: string, word2: string): string {
 
   return result;
 }
+
+function sortString(s: string) {
+  return s.split('').sort().join('');
+}
+
+function isAnagram(s: string, t: string): boolean {
+  return sortString(s) === sortString(t);
+}
+
+function rotateString(s: string, goal: string): boolean {
+  if (s === goal) return true;
+
+  let newS = s.slice(1) + s[0];
+  let i = 1;
+
+  while (newS !== s) {
+    newS = newS.slice(1) + newS[0];
+
+    if (newS === goal) return true;
+  }
+
+  return false;
+}
