@@ -308,3 +308,13 @@ function numIdenticalPairs(nums: number[]): number {
 
   return pairsCount;
 }
+
+function restoreString(s: string, indices: number[]): string {
+  type LetterConfig = [string, number];
+
+  return s
+    .split('')
+    .map((l, i): LetterConfig => [l, indices[i]])
+    .sort(([l1, i1], [l2, i2]) => i1 - i2)
+    .reduce((acc, lConfig) => (acc += lConfig[0]), '');
+}

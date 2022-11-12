@@ -111,3 +111,11 @@ function climbStairs(n: number): number {
 
   return s1 + s2;
 }
+
+function smallestEvenMultiple(n: number): number {
+  for (let t = n; t <= Infinity; t++) {
+    if (t % 2 === 0 && t % n === 0) return t;
+  }
+
+  return Infinity;
+}
