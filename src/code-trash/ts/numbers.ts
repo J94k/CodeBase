@@ -119,3 +119,11 @@ function smallestEvenMultiple(n: number): number {
 
   return Infinity;
 }
+
+function getRoot(n: number): number {
+  return Math.sqrt(n);
+}
+
+function mySqrt(x: number): number {
+  return +getRoot(x).toString().split('.')[0];
+}

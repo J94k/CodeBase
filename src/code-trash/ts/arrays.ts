@@ -318,3 +318,17 @@ function restoreString(s: string, indices: number[]): string {
     .sort(([l1, i1], [l2, i2]) => i1 - i2)
     .reduce((acc, lConfig) => (acc += lConfig[0]), '');
 }
+
+function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+  if (m === 0) {
+    nums2.forEach((n, i) => (nums1[i] = n));
+  } else if (n !== 0) {
+    const listsLength = m + n;
+
+    for (let i = m; i < listsLength; i++) {
+      nums1[i] = nums2[i - m];
+    }
+
+    nums1.sort((n1, n2) => n1 - n2);
+  }
+}

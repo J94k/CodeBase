@@ -34,3 +34,4 @@ function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 function checkTree(root: TreeNode | null): boolean {
   return root.val === root.left.val + root.right.val;
 }
+
