@@ -7,3 +7,4 @@ __log.*
 **/bin
 **/target
 Cargo.lock
+result
