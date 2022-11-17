@@ -1,17 +1,21 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define FALSE 0
+#define TRUE 1
 
 int *create_dynamic_list(int size);
 int *two_sum(int *nums, int numsSize, int target);
 
-int main() {
-    return 0;
-}
+int main() { return 0; }
 
 int *create_dynamic_list(int size) {
     int *list = malloc(sizeof(int) * size);
 
-    for (int i = 0; i < size; ++i) list[i] = 42;
+    for (int i = 0; i < size; ++i)
+        list[i] = 0;
 
     return list;
 }

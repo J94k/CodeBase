@@ -1,1 +1,4 @@
-# ❔ Scripts for nothing and everything ❔
+# 🗑️ CodeBase
+
+- trash solutions for easy problems
+- scripts for different s\*it
