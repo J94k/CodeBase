@@ -332,3 +332,17 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
     nums1.sort((n1, n2) => n1 - n2);
   }
 }
+
+function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
+  const list = nums1.concat(...nums2).sort((n1, n2) => n1 - n2);
+
+  if (list.length % 2 === 0) {
+    const m2i = list.length / 2;
+    const m1 = list[m2i - 1];
+    const m2 = list[m2i];
+
+    return (m1 + m2) / 2;
+  }
+
+  return list[Math.floor(list.length / 2)];
+}

@@ -127,3 +127,21 @@ function getRoot(n: number): number {
 function mySqrt(x: number): number {
   return +getRoot(x).toString().split('.')[0];
 }
+
+// @todo Fix
+function reverse(x: number): number {
+  if (x > (-2) ** 31 && x < 2 ** 31 - 1) {
+    let strX = String(x).replace(/^0+/, '');
+    strX = String(strX).replace(/0+$/, '');
+
+    const result = strX
+      .slice(x < 0 ? 1 : 0)
+      .split('')
+      .reverse()
+      .join('');
+
+    return x < 0 ? -result : +result;
+  }
+
+  return 0;
+}
