@@ -1,17 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#define SPACE_CODE 32
-#define IMPOSSIBLE_INDEX -1
+#include "./strings.h"
 
-int lengthOfLastWord(char *s);
-
-int main() {
-    printf("%d", lengthOfLastWord("day    "));
-    return 0;
-}
-
-int lengthOfLastWord(char *s) {
+int length_of_last_word(char *s) {
     int last_i = IMPOSSIBLE_INDEX;
 
     for (int i = strlen(s) - 1; i >= 0; --i) {

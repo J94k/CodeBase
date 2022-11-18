@@ -8,4 +8,7 @@ __log.*
 **/target
 Cargo.lock
 result
+
 *.out
+**/c/include
+**/c/lib
