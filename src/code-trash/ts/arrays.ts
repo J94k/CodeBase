@@ -1,4 +1,4 @@
-function runningSum(nums: number[]): number[] {
+export function runningSum(nums: number[]): number[] {
   const result: number[] = [];
 
   for (const n of nums) {
@@ -12,7 +12,7 @@ const getSum = (nums: number[]): number => {
   return nums.reduce((acc, n) => (acc += n), 0);
 };
 
-function pivotIndex(nums: number[]): number {
+export function pivotIndex(nums: number[]): number {
   for (let i = 0; i < nums.length; i++) {
     const leftSum = i === 0 ? 0 : getSum(nums.slice(0, i));
     const rightSum = i === nums.length - 1 ? 0 : getSum(nums.slice(i + 1));
@@ -23,7 +23,7 @@ function pivotIndex(nums: number[]): number {
   return -1;
 }
 
-function commonPrefix(s1: string, s2: string): string {
+export function commonPrefix(s1: string, s2: string): string {
   let p = '';
   const [first, last] = s1.length < s2.length ? [s1, s2] : [s2, s1];
 
@@ -35,7 +35,7 @@ function commonPrefix(s1: string, s2: string): string {
   return p;
 }
 
-function longestCommonPrefix(strs: string[]): string {
+export function longestCommonPrefix(strs: string[]): string {
   if (strs.length === 1) return strs[0];
 
   let prefix = '';
@@ -62,7 +62,7 @@ function longestCommonPrefix(strs: string[]): string {
   return prefix;
 }
 
-function maximumWealth(accounts: number[][]): number {
+export function maximumWealth(accounts: number[][]): number {
   let wealth = 0;
 
   for (const acc of accounts) {
@@ -74,7 +74,7 @@ function maximumWealth(accounts: number[][]): number {
   return wealth;
 }
 
-function removeElement(nums: number[], val: number): number {
+export function removeElement(nums: number[], val: number): number {
   const foo = -1;
   const resultArr: number[] = nums
     .sort((n1: number) => {
@@ -86,7 +86,7 @@ function removeElement(nums: number[], val: number): number {
   return elementsAmount === -1 ? resultArr.length : elementsAmount;
 }
 
-function removeDuplicates(nums: number[]): number {
+export function removeDuplicates(nums: number[]): number {
   const beyondRange = 101;
   let i = 0;
 
@@ -107,7 +107,7 @@ function removeDuplicates(nums: number[]): number {
   return numberOfElements > -1 ? numberOfElements : nums.length;
 }
 
-function searchInsert(nums: number[], target: number): number {
+export function searchInsert(nums: number[], target: number): number {
   let possibleIndex;
 
   for (let i = 0; i < nums.length; i++) {
@@ -124,7 +124,7 @@ function searchInsert(nums: number[], target: number): number {
   return possibleIndex !== undefined ? possibleIndex : nums.length;
 }
 
-function majorityElement(nums: number[]): number {
+export function majorityElement(nums: number[]): number {
   if (nums.length < 2) return nums[0];
 
   const minAmount = Math.ceil(nums.length / 2);
@@ -141,7 +141,7 @@ function majorityElement(nums: number[]): number {
   return Infinity;
 }
 
-function thirdMax(nums: number[]): number {
+export function thirdMax(nums: number[]): number {
   const cleaned: number[] = [];
 
   nums
@@ -157,7 +157,7 @@ function thirdMax(nums: number[]): number {
   return typeof third === 'number' ? third : cleaned[0];
 }
 
-function validMountainArray(arr: number[]): boolean {
+export function validMountainArray(arr: number[]): boolean {
   if (arr.length < 3) return false;
 
   const s1 = arr.at(0);
@@ -192,7 +192,7 @@ function validMountainArray(arr: number[]): boolean {
   return isMount && direction === Direction.down;
 }
 
-function twoSum(nums: number[], target: number): [number, number] {
+export function twoSum(nums: number[], target: number): [number, number] {
   for (let i = 0; i < nums.length - 1; i++) {
     for (let j = i + 1; j < nums.length; j++) {
       const sum = nums[i] + nums[j];
@@ -206,7 +206,7 @@ function twoSum(nums: number[], target: number): [number, number] {
   return [-1, -1];
 }
 
-const firstBadVersion = (isBadVersion: any) => {
+export const firstBadVersion = (isBadVersion: any) => {
   return (n: number): number => {
     let lastBadVersion: number;
 
@@ -225,17 +225,17 @@ const firstBadVersion = (isBadVersion: any) => {
 // @todo increase speed to O(n)
 // in this case we can remove number signs, so we don't care about
 // multiplication at first place for correct sorting
-function sortedSquares(nums: number[]): number[] {
+export function sortedSquares(nums: number[]): number[] {
   return nums.map((n) => n ** 2).sort((n1, n2) => n1 - n2);
 }
 
-function rotate(nums: number[], k: number): void {
+export function rotate(nums: number[], k: number): void {
   for (let s = 0; s < k; ++s) {
     nums.unshift(nums.pop());
   }
 }
 
-function reverseString(s: string[]): string {
+export function reverseString(s: string[]): string {
   let sI = 0;
   let eI = s.length - 1;
 
@@ -251,7 +251,7 @@ function reverseString(s: string[]): string {
   return s.join('');
 }
 
-function reverseWords(s: string): string {
+export function reverseWords(s: string): string {
   let result = '';
 
   for (const w of s.split(' ')) {
@@ -262,7 +262,7 @@ function reverseWords(s: string): string {
   return result.trim();
 }
 
-function average(salary: number[]): number {
+export function average(salary: number[]): number {
   const targetSalaries = salary.sort((s1, s2) => s1 - s2).slice(1, salary.length - 2);
 
   return targetSalaries.length
@@ -278,7 +278,7 @@ function arraySign(nums: number[]): number {
   return product > 0 ? 1 : product === 0 ? 0 : -1;
 }
 
-function canMakeArithmeticProgression(arr: number[]): boolean {
+export function canMakeArithmeticProgression(arr: number[]): boolean {
   const sorted = arr.sort((n1, n2) => n1 - n2);
   let commonDifference;
 
@@ -297,7 +297,7 @@ function canMakeArithmeticProgression(arr: number[]): boolean {
   return true;
 }
 
-function numIdenticalPairs(nums: number[]): number {
+export function numIdenticalPairs(nums: number[]): number {
   let pairsCount = 0;
 
   for (let i = 0; i < nums.length - 1; i++) {
@@ -309,7 +309,7 @@ function numIdenticalPairs(nums: number[]): number {
   return pairsCount;
 }
 
-function restoreString(s: string, indices: number[]): string {
+export function restoreString(s: string, indices: number[]): string {
   type LetterConfig = [string, number];
 
   return s
@@ -319,7 +319,7 @@ function restoreString(s: string, indices: number[]): string {
     .reduce((acc, lConfig) => (acc += lConfig[0]), '');
 }
 
-function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+export function merge(nums1: number[], m: number, nums2: number[], n: number): void {
   if (m === 0) {
     nums2.forEach((n, i) => (nums1[i] = n));
   } else if (n !== 0) {
@@ -333,7 +333,7 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
   }
 }
 
-function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
+export function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
   const list = nums1.concat(...nums2).sort((n1, n2) => n1 - n2);
 
   if (list.length % 2 === 0) {
@@ -345,4 +345,24 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
   }
 
   return list[Math.floor(list.length / 2)];
+}
+
+// @todo Optimize speed
+export function maxArea(height: number[]): number {
+  let bestArea = 0;
+
+  for (let i = 0; i < height.length - 1; ++i) {
+    const lWall = height[i];
+
+    for (let j = i + 1; j < height.length; ++j) {
+      const rWall = height[j];
+      const sideWall = Math.min(lWall, rWall);
+      const bottom = j - i;
+      const area = sideWall * bottom;
+
+      if (area > bestArea) bestArea = area;
+    }
+  }
+
+  return bestArea;
 }

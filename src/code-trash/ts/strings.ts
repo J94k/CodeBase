@@ -170,3 +170,29 @@ function rotateString(s: string, goal: string): boolean {
 
   return false;
 }
+
+function longestPalindrome(s: string): string {
+  if (s.length < 2) return s;
+  if (s.match(new RegExp(s[0], 'g'))?.length === s.length) return s;
+
+  let subLength = s.length < 3 ? 1 : 2;
+  let result = '';
+
+  while (subLength < s.length) {
+    for (let i = 0; i <= s.length - subLength; ++i) {
+      const subStr = s.slice(i, i + subLength);
+      const isEven = subStr.length % 2 === 0;
+      const middle = isEven ? subStr.length / 2 : Math.floor(subStr.length / 2);
+      const left = subStr.slice(0, middle);
+      const right = subStr.slice(isEven ? middle : middle + 1);
+
+      if (left === right.split('').reverse().join('') && result.length < subStr.length) {
+        result = subStr;
+      }
+    }
+
+    subLength += 1;
+  }
+
+  return result;
+}
