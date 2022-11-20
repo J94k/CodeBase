@@ -14,24 +14,23 @@
  */
 
 interface TreeNode {
-  val: number;
-  left: TreeNode | null;
-  right: TreeNode | null;
+  val: number
+  left: TreeNode | null
+  right: TreeNode | null
 }
 
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
   if (!p && !q) {
-    return true;
+    return true
   }
 
   if ((p && !q) || (q && !p) || p!.val !== q!.val) {
-    return false;
+    return false
   }
 
-  return isSameTree(p!.left, q!.left) && isSameTree(p!.right, q!.right);
+  return isSameTree(p!.left, q!.left) && isSameTree(p!.right, q!.right)
 }
 
 function checkTree(root: TreeNode | null): boolean {
-  return root.val === root.left.val + root.right.val;
+  return root.val === root.left.val + root.right.val
 }
-

@@ -5,7 +5,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest ./tests"
+    "test": "jest ./tests",
+    "format": "npx prettier -w ./*.ts ./tests/"
   },
   "type": "module",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "@jest/globals": "^29.3.1",
     "@types/jest": "^29.2.3",
     "jest": "^29.3.1",
+    "prettier": "^2.7.1",
     "ts-jest": "^29.0.3"
   }
 }
