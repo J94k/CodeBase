@@ -10,6 +10,14 @@ describe('Arrays', () => {
       arrays.maxArea([
         8361, 5302, 8672, 2400, 5150, 3527, 9216, 6713, 2902, 310, 555, 9176, 311, 9968, 5705, 3983,
       ])
-    ).toBe(108691)
+    ).toBe(108693)
+  })
+
+  test('Should correctly calculate jump abilities', () => {
+    expect(arrays.canJump([13])).toBe(true)
+    expect(arrays.canJump([2, 3, 1, 1, 4])).toBe(true)
+    expect(arrays.canJump([3, 2, 1, 0, 4])).toBe(false)
+    expect(arrays.canJump([2, 0, 0])).toBe(true)
+    expect(arrays.canJump([2, 5, 0, 0])).toBe(true)
   })
 })

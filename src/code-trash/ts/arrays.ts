@@ -366,3 +366,33 @@ export function maxArea(height: number[]): number {
 
   return bestArea
 }
+
+const getBestIndex = (nums: number[], i: number, steps: number) => {
+  for (let s = steps; s >= 1; --s) {
+    if (!!nums[i + s]) return i + s
+  }
+
+  return i + steps
+}
+
+export function canJump(nums: number[]): boolean {
+  const nl = nums.length
+
+  if (nl < 2) return true
+
+  let nextJumpIndex = 0
+
+  for (let i = 0; i < nl; ++i) {
+    if (i === nextJumpIndex) {
+      const steps = nums[i]
+
+      if (steps === 0 && i < nl - 1) return false
+
+      nextJumpIndex = getBestIndex(nums, i, steps)
+
+      if (nextJumpIndex >= nl - 1) return true
+    }
+  }
+
+  return false
+}
