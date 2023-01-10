@@ -148,12 +148,24 @@ function mergeAlternately(word1: string, word2: string): string {
   return result
 }
 
-function sortString(s: string) {
-  return s.split('').sort().join('')
-}
-
 function isAnagram(s: string, t: string): boolean {
-  return sortString(s) === sortString(t)
+  if (s.length !== t.length) return false
+
+  const checked = new Set()
+
+  for (const l of s) {
+    if (checked.has(l)) continue
+
+    const lRegex = new RegExp(l, 'g')
+    const sCounter = s.match(lRegex)
+    const tCounter = t.match(lRegex)
+
+    if (sCounter?.length !== tCounter?.length) return false
+
+    checked.add(l)
+  }
+
+  return true
 }
 
 function rotateString(s: string, goal: string): boolean {

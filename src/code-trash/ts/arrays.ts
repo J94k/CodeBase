@@ -396,3 +396,7 @@ export function canJump(nums: number[]): boolean {
 
   return false
 }
+
+export function containsDuplicate(nums: number[]): boolean {
+  return [...new Set(nums)].length < nums.length
+}
