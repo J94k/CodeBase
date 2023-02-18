@@ -80,34 +80,6 @@ var sortedSquares = function (nums) {
   return nums.map((n) => n ** 2).sort((n1, n2) => n1 - n2);
 };
 
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-const customBinarySearch = (nums, target) => {
-  let sI = 0;
-  let eI = nums.length - 1;
-
-  if (nums.at(0) > target) return -1;
-  if (nums.at(-1) < target) return eI + 1;
-  if (nums[sI] === target) return sI;
-  if (nums[eI] === target) return eI;
-
-  while (sI < eI) {
-    let mI = Math.floor(sI + (eI - sI) / 2);
-    let mN = nums[mI];
-
-    if (mN === target) return mI;
-    if (eI - sI < 2) break;
-
-    if (target < mN) eI = mI;
-    else sI = mI;
-  }
-
-  return [sI, eI];
-};
-
 function searchInsert(nums, target) {
   const result = binarySearch(nums, target);
 

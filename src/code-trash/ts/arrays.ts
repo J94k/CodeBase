@@ -107,23 +107,6 @@ export function removeDuplicates(nums: number[]): number {
   return numberOfElements > -1 ? numberOfElements : nums.length
 }
 
-export function searchInsert(nums: number[], target: number): number {
-  let possibleIndex
-
-  for (let i = 0; i < nums.length; i++) {
-    const currentN = nums[i]
-
-    if (currentN === target) return i
-
-    if (currentN > target) {
-      possibleIndex = i
-      break
-    }
-  }
-
-  return possibleIndex !== undefined ? possibleIndex : nums.length
-}
-
 export function majorityElement(nums: number[]): number {
   if (nums.length < 2) return nums[0]
 
@@ -204,22 +187,6 @@ export function twoSum(nums: number[], target: number): [number, number] {
   }
 
   return [-1, -1]
-}
-
-export const firstBadVersion = (isBadVersion: any) => {
-  return (n: number): number => {
-    let lastBadVersion: number
-
-    for (let v = n; v >= 1; v--) {
-      if (isBadVersion(v)) {
-        lastBadVersion = v
-      } else {
-        if (lastBadVersion) return lastBadVersion
-      }
-    }
-
-    return lastBadVersion
-  }
 }
 
 // @todo increase speed to O(n)
@@ -400,3 +367,41 @@ export function canJump(nums: number[]): boolean {
 export function containsDuplicate(nums: number[]): boolean {
   return [...new Set(nums)].length < nums.length
 }
+
+export function binarySearch(nums: number[], target: number): number {
+  let startI = 0
+  let endI = nums.length - 1
+
+  while (startI <= endI) {
+    const middleI = startI + Math.floor((endI - startI) / 2)
+    const middle = nums[middleI]
+
+    if (middle === target) return middleI
+
+    if (target > middle) {
+      startI = middleI + 1
+    } else {
+      endI = middleI - 1
+    }
+  }
+
+  return -1
+}
+
+export const firstBadVersion = function (isBadVersion: (v: number) => boolean) {
+  return function (n: number): number {
+    let isPrevVersionBad = false
+
+    for (let v = 1; v <= n; v++) {
+      const isCurrentVBad = isBadVersion(v)
+
+      if (isCurrentVBad) {
+        if (!isPrevVersionBad) return v
+
+        isPrevVersionBad = true
+      }
+    }
+  }
+}
+
+export function searchInsert(nums: number[], target: number): number {}

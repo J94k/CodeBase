@@ -20,4 +20,10 @@ describe('Arrays', () => {
     expect(arrays.canJump([2, 0, 0])).toBe(true)
     expect(arrays.canJump([2, 5, 0, 0])).toBe(true)
   })
+
+  test('Should correctly find the target with binary search', () => {
+    expect(arrays.binarySearch([-1, 0, 3, 5, 9, 12], 2)).toBe(-1)
+    expect(arrays.binarySearch([-1, 0, 3, 5, 9, 12], 9)).toBe(4)
+    expect(arrays.binarySearch([5], 5)).toBe(0)
+  })
 })
