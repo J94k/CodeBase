@@ -98,3 +98,15 @@ var isHappy = function (n) {
 
   return true;
 };
+
+/**
+ * @param {number} n
+ * @return {Function} counter
+ */
+var createCounter = function (n) {
+  let counter = n;
+
+  return function () {
+    return counter++;
+  };
+};

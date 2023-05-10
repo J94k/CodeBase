@@ -83,7 +83,7 @@ var sortedSquares = function (nums) {
 function searchInsert(nums, target) {
   const result = binarySearch(nums, target);
 
-  if (typeof result === 'number') return result;
+  if (typeof result === "number") return result;
 
   return result[0] + 1;
 }
@@ -154,4 +154,8 @@ var sumOddLengthSubarrays = function (arr) {
   }
 
   return sum;
+};
+
+Array.prototype.last = function () {
+  return this.length ? this.at(-1) : -1;
 };
