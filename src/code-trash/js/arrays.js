@@ -159,3 +159,53 @@ var sumOddLengthSubarrays = function (arr) {
 Array.prototype.last = function () {
   return this.length ? this.at(-1) : -1;
 };
+
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var filter = function (arr, fn) {
+  const result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const v = arr[i];
+
+    if (fn(v, i)) result.push(v);
+  }
+
+  return result;
+};
+
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var map = function (arr, fn) {
+  const r = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    r[i] = fn(arr[i], i);
+  }
+
+  return r;
+};
+
+/**
+ * @param {number[]} nums
+ * @param {Function} fn
+ * @param {number} init
+ * @return {number}
+ */
+var reduce = function (nums, fn, init) {
+  if (!nums.length) return init;
+
+  let v = init;
+
+  for (let i = 0; i < nums.length; i++) {
+    v = fn(v, nums[i]);
+  }
+
+  return v;
+};
