@@ -22,3 +22,44 @@ var createCounter = function (init) {
     },
   };
 };
+
+/**
+ * @param {Function[]} functions
+ * @return {Function}
+ */
+var compose = function (functions) {
+  return function (x) {
+    if (!functions.length) return x;
+
+    let currentResult;
+
+    for (let i = functions.length - 1; i >= 0; i--) {
+      if (!currentResult) {
+        currentResult = functions[i](x);
+      } else {
+        currentResult = functions[i](currentResult);
+      }
+    }
+
+    return currentResult;
+  };
+};
+
+/**
+ * @param {Function} fn
+ */
+function memoize(fn) {
+  let cache = new Map();
+
+  return function (...args) {
+    const vKey = JSON.stringify(args);
+    const v = cache.get(vKey);
+
+    if (v !== undefined) return v;
+
+    const r = fn(...args);
+
+    cache.set(vKey, r);
+    return r;
+  };
+}
