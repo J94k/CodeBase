@@ -32,7 +32,9 @@ var addDigits = function (num) {
  * @return {number}
  */
 var findComplement = function (num) {
-  const complement = num.toString(2).split``.map((n) => (n === '1' ? '0' : '1'));
+  const complement = num.toString(2).split``.map((n) =>
+    n === "1" ? "0" : "1"
+  );
 
   return parseInt(complement.join``, 2);
 };
@@ -87,8 +89,8 @@ var isHappy = function (n) {
 
   if (n === 1) return true;
 
-  while (strN !== '1') {
-    let newN = String(strN.split('').reduce((sum, n) => (sum += n ** 2), 0));
+  while (strN !== "1") {
+    let newN = String(strN.split("").reduce((sum, n) => (sum += n ** 2), 0));
 
     if (computed.includes(newN)) return false;
 

@@ -209,3 +209,22 @@ var reduce = function (nums, fn, init) {
 
   return v;
 };
+
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array[]}
+ */
+var chunk = function (arr, size) {
+  if (!arr.length) return [];
+
+  const r = [];
+  let chunkSatartI = 0;
+
+  for (let cI = 1; cI <= Math.ceil(arr.length / size); cI++) {
+    r.push(arr.slice(chunkSatartI, cI * size));
+    chunkSatartI += size;
+  }
+
+  return r;
+};
