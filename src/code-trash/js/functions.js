@@ -79,4 +79,16 @@ var once = function (fn) {
   };
 };
 
-
+/**
+ * @param {Function} fn
+ * @param {number} t
+ * @return {Function}
+ */
+var timeLimit = function (fn, t) {
+  return function (...args) {
+    return Promise.race([
+      fn(...args),
+      new Promise((res, rej) => setTimeout(rej, t, "Time Limit Exceeded")),
+    ]);
+  };
+};
