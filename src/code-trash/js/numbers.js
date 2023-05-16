@@ -112,3 +112,23 @@ var createCounter = function (n) {
     return counter++;
   };
 };
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isStrictlyPalindromic = function (n) {
+  for (let b = 2; b <= n - 2; b++) {
+    const strN = n.toString(b);
+    const leftEnd = Math.floor(strN.length / 2) - 1;
+    const rightStart = strN.length % 2 === 0 ? leftEnd + 1 : leftEnd + 2;
+    const leftS = strN.slice(0, leftEnd + 1);
+    const rightSR = strN.slice(rightStart, strN.length);
+
+    if (leftS !== rightSR.split("").reverse().join("")) {
+      return false;
+    }
+  }
+
+  return true;
+};
