@@ -1,4 +1,5 @@
 # 🗑️ CodeBase
 
-- trash solutions for easy problems
-- scripts for different s\*it
+- Trash solutions for coding problems
+- Scripts for different s\*it
+- Test code
