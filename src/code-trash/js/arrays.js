@@ -219,11 +219,11 @@ var chunk = function (arr, size) {
   if (!arr.length) return [];
 
   const r = [];
-  let chunkSatartI = 0;
+  let chunkStartI = 0;
 
   for (let cI = 1; cI <= Math.ceil(arr.length / size); cI++) {
-    r.push(arr.slice(chunkSatartI, cI * size));
-    chunkSatartI += size;
+    r.push(arr.slice(chunkStartI, cI * size));
+    chunkStartI += size;
   }
 
   return r;
@@ -248,9 +248,29 @@ var merge = function (nums1, m, nums2, n) {
 
 /**
  * @param {number[]} nums
- * @param {number} val
  * @return {number}
  */
-var removeElement = function (nums, val) {
-  return nums.filter((n) => n !== val).length;
+var majorityElement = function(nums) {
+  const minOcc = Math.ceil(nums.length / 2)
+  const occurrence = {}
+
+  for (let i = 0; i < nums.length; i++) {
+    const v = nums[i]
+
+    if (!occurrence[v]) occurrence[v] = 1
+    else occurrence[v]++
+
+    if (occurrence[v] >= minOcc) return v
+  }
+};
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var rotate = function(nums, k) {
+  for (let it = 1; it <= k; it++) {
+    nums.unshift(nums.pop())
+  }
 };
