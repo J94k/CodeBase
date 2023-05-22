@@ -1,8 +1,21 @@
 /**
- * @param {string} s
- * @return {string}
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
  */
-var decodeString = function (s) {
-  // "2[abc]3[cd]ef" -> "abcabccdcdcdef"
-  // "3[a2[c]]" -> "accaccacc"
+var canConstruct = function(ransomNote, magazine) {
+  if (magazine.length < ransomNote.length) return false
+
+  const arr = magazine.split('')
+
+  for (let i = 0; i < ransomNote.length; i++) {
+    const l = ransomNote[i]
+    const foundI = arr.indexOf(l)
+
+    if (foundI === -1) return false
+
+    arr[foundI] = undefined
+  }
+
+  return true
 };

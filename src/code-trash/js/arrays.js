@@ -270,7 +270,52 @@ var majorityElement = function(nums) {
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function(nums, k) {
-  for (let it = 1; it <= k; it++) {
-    nums.unshift(nums.pop())
+  const items = nums.splice(nums.length - k)
+
+  nums.unshift(...items)
+};
+
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function (nums, val) {
+  let lI = nums.length - 1
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === val) {
+      for (let j = lI; j >= i; j--) {
+        if (nums[j] !== val) {
+          const lastEl = nums[j]
+
+          nums[j] = nums[i]
+          nums[i] = lastEl
+          lI = j - 1
+          break
+        }
+      }
+    }
+
+    if (i === lI) return i + 1
   }
+};
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function(nums, k) {
+  const m = new Map
+
+  for (const n of nums) {
+    const c = m.get(n)
+
+    m.set(n, c ? c + 1 : 1)
+  }
+
+  let kvArr = [...m].sort((a, b) => b[1] - a[1])
+
+  return kvArr.map(([k]) => k).slice(0, k)
 };
