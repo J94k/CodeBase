@@ -281,24 +281,15 @@ var rotate = function(nums, k) {
  * @return {number}
  */
 var removeElement = function (nums, val) {
-  let lI = nums.length - 1
+  let count = 0;
 
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === val) {
-      for (let j = lI; j >= i; j--) {
-        if (nums[j] !== val) {
-          const lastEl = nums[j]
-
-          nums[j] = nums[i]
-          nums[i] = lastEl
-          lI = j - 1
-          break
-        }
-      }
+    if (nums[i] !== val) {
+      nums[count++] = nums[i];
     }
-
-    if (i === lI) return i + 1
   }
+
+  return count;
 };
 
 /**

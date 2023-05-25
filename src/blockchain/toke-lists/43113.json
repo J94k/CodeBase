@@ -1,0 +1,44 @@
+{
+  "name": "NotEternal - Avalanche Fuji tokens",
+  "timestamp": "2023-05-18T10:37:12.360Z",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "logoURI": "",
+  "tokens": [
+    {
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "address": "0xd00ae08403B9bbb9124bB305C09058E32C39A48c",
+      "chainId": 43113,
+      "decimals": 18,
+      "logoURI": ""
+    },
+    {
+      "name": "ChainLink Token",
+      "symbol": "LINK",
+      "address": "0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846",
+      "chainId": 43113,
+      "decimals": 18,
+      "logoURI": ""
+    },
+    {
+      "name": "Testnet USDC",
+      "symbol": "USDC",
+      "address": "0xB6076C93701D6a07266c31066B298AeC6dd65c2d",
+      "chainId": 43113,
+      "decimals": 6,
+      "logoURI": ""
+    },
+    {
+      "name": "CRSIP Token",
+      "symbol": "CRSIP",
+      "address": "0xfD3eD0A00130481Db826F361E9B5A723F86b833F",
+      "chainId": 43113,
+      "decimals": 18,
+      "logoURI": ""
+    }
+  ]
+}
