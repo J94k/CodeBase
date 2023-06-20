@@ -6,7 +6,7 @@
     "minor": 0,
     "patch": 0
   },
-  "logoURI": "https://github.com/NotEternal/CodeBase/blob/main/src/blockchain/toke-lists/list-logo.png",
+  "logoURI": "https://raw.githubusercontent.com/NotEternal/CodeBase/main/src/blockchain/toke-lists/list-logo.png",
   "tokens": [
     {
       "name": "Wrapped AVAX",
