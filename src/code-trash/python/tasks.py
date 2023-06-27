@@ -354,3 +354,134 @@ def multiplication(row, column):
     return row * column
 
 print_operation_table(multiplication, 6, 6)
+
+""" 
+Задача 38: Дополнить телефонный справочник возможностью изменения и удаления данных.
+Пользователь также может ввести имя или фамилию, и Вы должны реализовать функционал
+для изменения и удаления данных
+"""
+
+from os import path
+
+file_base = "base.txt"
+last_id = 0
+all_data = []
+
+if not path.exists(file_base):
+    with open(file_base, "w", encoding="utf-8") as _:
+        pass
+
+
+def read_records():
+    global last_id, all_data
+
+    with open(file_base, encoding="utf-8") as f:
+        all_data = [i.strip() for i in f]
+        if all_data:
+            last_id = int(all_data[-1].split()[0])
+            return all_data
+    return []
+
+
+def show_all():
+    if all_data:
+        print(*all_data, sep="\n")
+    else:
+        print("Empty data")
+
+
+def add_new_contact():
+    global last_id
+    array = ["surname", "name", "patronymic", "phone_number"]
+    string = ""
+    for i in array:
+        string += input(f"Enter {i}: ") + " "
+    last_id += 1
+
+    with open(file_base, "a", encoding="utf-8") as f:
+        f.write(f"{last_id} {string}\n")
+
+
+def update_contact():
+    contact_id = input("Enter contact ID: ")
+    updated_data = input("Enter updated data: ")
+
+    with open(file_base, "r+", encoding="utf-8") as f:
+        lines = f.readlines()
+        for i, line in enumerate(lines):
+            if line.startswith(contact_id):
+                lines[i] = f"{contact_id} {updated_data}\n"
+                break
+        f.seek(0)
+        f.writelines(lines)
+
+
+def delete_contact():
+    contact_id = input("Enter contact ID: ")
+
+    with open(file_base, "r+", encoding="utf-8") as f:
+        lines = f.readlines()
+        f.seek(0)
+        for line in lines:
+            if not line.startswith(contact_id):
+                f.write(line)
+        f.truncate()
+
+
+def main_menu():
+    play = True
+    while play:
+        read_records()
+        answer = input("Phone book:\n"
+                       "1. Show all records\n"
+                       "2. Add a record\n"
+                       "3. Search a record\n"
+                       "4. Change\n"
+                       "5. Delete\n"
+                       "6. Exp/Imp\n"
+                       "7. Exit\n")
+        match answer:
+            case "1":
+                show_all()
+            case "2":
+                add_new_contact()
+            case "3":
+                pass
+            case "4":
+                update_contact()
+            case "5":
+                delete_contact()
+            case "6":
+                pass
+            case "7":
+                play = False
+            case _:
+                print("Try again!\n")
+
+
+main_menu()
+
+
+""" 
+Задача 40: Работать с файлом california_housing_train.csv, который находится в
+папке sample_data. Определить среднюю стоимость дома, где кол-во людей
+от 0 до 500(population).
+"""
+
+import pandas as pd
+
+data = pd.read_csv('california_housing_train.csv')
+filtered_by_range_population = data[(data['population'] >= 0) & (data['population'] <= 500)]
+average_house_value = filtered_by_range_population['median_house_value'].mean()
+
+print("Средняя стоимость дома:", average_house_value)
+
+""" 
+Задача 42: Узнать какая максимальная households в зоне минимального значения population.
+"""
+
+min_population = data['population'].min()
+filtered_by_min_population = data[data['population'] == min_population]
+max_households = filtered_by_min_population['households'].max()
+
+print("Максимальное количество для минимального населениия:", max_households)
