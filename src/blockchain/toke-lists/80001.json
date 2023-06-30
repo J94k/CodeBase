@@ -1,0 +1,55 @@
+{
+  "name": "NotEternal - Polygon Mumbai",
+  "logoURI": "https://raw.githubusercontent.com/NotEternal/CodeBase/main/src/blockchain/toke-lists/list-logo.png",
+  "keywords": ["defi"],
+  "timestamp": "2023-06-29T10:01:26.458+00:00",
+  "tokens": [
+    {
+      "chainId": 80001,
+      "address": "0xE097d6B3100777DC31B34dC2c58fB524C2e76921",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "decimals": 6
+    },
+    {
+      "chainId": 80001,
+      "address": "0x2d7882beDcbfDDce29Ba99965dd3cdF7fcB10A1e",
+      "name": "Test Token",
+      "symbol": "TST",
+      "decimals": 18
+    },
+    {
+      "chainId": 80001,
+      "address": "0x4fb1e8Ff1f233539CF1Dd4305ba2194C0DA4C56d",
+      "name": "Alpine Save",
+      "symbol": "alpSave",
+      "decimals": 18
+    },
+    {
+      "chainId": 80001,
+      "address": "0x7BFbEaA3DF9a1FdB8615446370cd73eF7D67Bf8f",
+      "name": "Zcash",
+      "symbol": "ZEC",
+      "decimals": 18
+    },
+    {
+      "chainId": 80001,
+      "address": "0x4914570CF6E7192F27737ef7dd825F31D2BbCa68",
+      "name": "MyToken",
+      "symbol": "MTK",
+      "decimals": 18
+    },
+    {
+      "chainId": 80001,
+      "address": "0x000080383847bD75F91c168269Aa74004877592f",
+      "name": "Zeta",
+      "symbol": "ZETA",
+      "decimals": 18
+    }
+  ],
+  "version": {
+    "major": 270,
+    "minor": 0,
+    "patch": 0
+  }
+}
