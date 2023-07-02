@@ -485,3 +485,24 @@ filtered_by_min_population = data[data['population'] == min_population]
 max_households = filtered_by_min_population['households'].max()
 
 print("Максимальное количество для минимального населениия:", max_households)
+
+""" 
+Задание 44: В ячейке ниже представлен код генерирующий DataFrame, которая состоит
+всего из 1 столбца.Ваша задача перевести его в one hot вид. Сделайте его без
+использования метода get_dummies.
+"""
+
+import random
+import pandas as pd
+
+lst = ['robot'] * 10
+lst += ['human'] * 10
+random.shuffle(lst)
+data = pd.DataFrame({'whoAmI': lst})
+data.head()
+
+encoded_data = pd.concat([data['whoAmI'],
+                         data['whoAmI'].apply(lambda x: 1 if x == 'human' else 0),
+                         data['whoAmI'].apply(lambda x: 1 if x == 'robot' else 0)], axis=1)
+encoded_data.columns = ['original', 'human', 'robot']
+encoded_data.head()
