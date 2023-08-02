@@ -1,0 +1,20 @@
+{
+  "name": "NotEternal Base tokens",
+  "timestamp": "2023-05-18T10:37:12.360Z",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "logoURI": "https://raw.githubusercontent.com/NotEternal/CodeBase/main/src/blockchain/toke-lists/list-logo.png",
+  "tokens": [
+    {
+      "name": "Weenus",
+      "symbol": "WEENUS",
+      "address": "0x428DEe84CF0986ceE082c0A7c6f310A58e4e0ec9",
+      "chainId": 8453,
+      "decimals": 18,
+      "logoURI": ""
+    }
+  ]
+}
